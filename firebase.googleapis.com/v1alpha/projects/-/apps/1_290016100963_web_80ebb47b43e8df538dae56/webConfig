@@ -1,0 +1,9 @@
+{
+  "projectId": "stacky-bird",
+  "appId": "1:290016100963:web:80ebb47b43e8df538dae56",
+  "databaseURL": "https://stacky-bird.firebaseio.com",
+  "storageBucket": "stacky-bird.firebasestorage.app",
+  "authDomain": "stacky-bird.firebaseapp.com",
+  "messagingSenderId": "290016100963",
+  "measurementId": "G-MM9W5MYTQP"
+}
