@@ -22,12 +22,10 @@
   <script src="assets/js/analyticsWebPlugin.js"></script>
 
   <script src="assets/js/googleAdsApiPlugin.js"></script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7799788185947239" crossorigin="anonymous" data-ad-frequency-hint="30s"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7799788185947239" crossorigin="anonymous"></script>
   <script>
     window.adsbygoogle = window.adsbygoogle || [];
-    var adBreak = adConfig = function(o) {
-      adsbygoogle.push(o);
-    }
+    var adBreak = adConfig = function(o) { adsbygoogle.push(o); }
   </script>
 
   <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app-compat.js"></script>
@@ -49,25 +47,46 @@
   </script>
 
   <style>
-    body { background-color: #000; margin: 0; padding: 0; overflow: hidden; }
-    .game-section { display: flex; justify-content: center; align-items: center; height: 100vh; width: 100vw; }
-    #gameContainer { width: 100%; height: 100%; }
+    /* Fullscreen Game Setup */
+    body, html { background-color: #000; margin: 0; padding: 0; overflow: hidden; height: 100%; width: 100%; }
+    #main { height: 100%; width: 100%; display: flex; flex-direction: column; }
+    .game-section { flex-grow: 1; display: flex; justify-content: center; align-items: center; }
+    .webgl-wrapper, .webgl-content, #gameContainer { width: 100% !important; height: 100% !important; }
+
+    /* Hiding the "Junk" but keeping the IDs so scripts don't crash */
+    #otherAppIcons, #aboutGame, #gameInfo, .navbar, .play-more-btn { display: none !important; }
     
-    /* Strict removal of the UI junk we don't want */
-    #otherAppIcons, #aboutGame, #gameInfo, #mainFooter, .navbar, .inline-ads-160x600, .play-more-btn { 
-        display: none !important; 
+    /* These containers stay in the code so 'style' errors don't happen, but they are invisible */
+    .inline-ads-160x600, #stackybird-io_728x90, #mainFooter, #storeLinks {
+        visibility: hidden !important;
+        position: absolute !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        pointer-events: none !important;
     }
   </style>
 </head>
 
 <body>
   <div id="main">
+    <nav class="navbar" style="display:none;"></nav>
+
     <div class="game-section">
-      <div class="webgl-wrapper align-self-stretch" style="width: 100%; height: 100%;">
-        <div class="webgl-content" style="width: 100%; height: 100%;">
+      <div class="inline-ads-160x600"><ins class="adsbygoogle"></ins></div>
+      
+      <div class="webgl-wrapper">
+        <div class="webgl-content">
           <div id="gameContainer"></div>
+          <ins id="stackybird-io_728x90" class="adsbygoogle"></ins>
         </div>
       </div>
+
+      <div class="inline-ads-160x600"><ins class="adsbygoogle"></ins></div>
+    </div>
+
+    <div id="mainFooter" style="display:none;">
+        <div id="storeLinks"></div>
     </div>
   </div>
 
