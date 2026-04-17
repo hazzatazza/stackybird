@@ -18,7 +18,15 @@
     gtag('js', new Date());
     gtag('config', 'G-MM9W5MYTQP');
   </script>
+  
   <script src="assets/js/analyticsWebPlugin.js"></script>
+  <script>
+    // FIX for "setAdConfig is not defined"
+    // This tells the game the ad config is "ready" without actually loading ads
+    var adConfig = function(o) { console.log("Ad config bypassed."); };
+    var setAdConfig = function(o) { console.log("Set Ad Config bypassed."); };
+    window.adsbygoogle = [];
+  </script>
 
   <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-analytics-compat.js"></script>
@@ -42,8 +50,11 @@
     body { background-color: #000; margin: 0; padding: 0; overflow: hidden; }
     .game-section { display: flex; justify-content: center; align-items: center; height: 100vh; width: 100vw; }
     #gameContainer { width: 100%; height: 100%; }
-    /* Hide the specific "Other App Icons" container just in case */
-    #otherAppIcons, #aboutGame, #gameInfo, #mainFooter { display: none !important; }
+    
+    /* Strict removal of the UI junk */
+    #otherAppIcons, #aboutGame, #gameInfo, #mainFooter, .navbar, .inline-ads-160x600, .adsbygoogle { 
+        display: none !important; 
+    }
   </style>
 </head>
 
