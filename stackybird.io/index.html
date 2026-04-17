@@ -20,12 +20,20 @@
   </script>
   
   <script src="assets/js/analyticsWebPlugin.js"></script>
+
   <script>
-    // FIX for "setAdConfig is not defined"
-    // This tells the game the ad config is "ready" without actually loading ads
-    var adConfig = function(o) { console.log("Ad config bypassed."); };
-    var setAdConfig = function(o) { console.log("Set Ad Config bypassed."); };
+    // This block tells Unity "No ads are available, and don't worry about it."
+    window.adConfig = function(o) { console.log("Ad config bypassed."); };
+    window.setAdConfig = function(o) { console.log("Set Ad Config bypassed."); };
     window.adsbygoogle = [];
+
+    // Fix for isRewardedAdAvailable and other potential ad calls
+    window.isRewardedAdAvailable = function() { return false; };
+    window.showRewardedAd = function() { console.log("Rewarded ad request blocked."); };
+    window.showInterstitialAd = function() { console.log("Interstitial ad request blocked."); };
+    window.hideBannerAd = function() { };
+    window.showBannerAd = function() { };
+    window.adBreak = function(o) { if(o && o.adBreakDone) o.adBreakDone(); };
   </script>
 
   <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app-compat.js"></script>
@@ -51,7 +59,7 @@
     .game-section { display: flex; justify-content: center; align-items: center; height: 100vh; width: 100vw; }
     #gameContainer { width: 100%; height: 100%; }
     
-    /* Strict removal of the UI junk */
+    /* Strict removal of UI elements */
     #otherAppIcons, #aboutGame, #gameInfo, #mainFooter, .navbar, .inline-ads-160x600, .adsbygoogle { 
         display: none !important; 
     }
