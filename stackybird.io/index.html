@@ -21,19 +21,13 @@
   
   <script src="assets/js/analyticsWebPlugin.js"></script>
 
+  <script src="assets/js/googleAdsApiPlugin.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7799788185947239" crossorigin="anonymous" data-ad-frequency-hint="30s"></script>
   <script>
-    // This block tells Unity "No ads are available, and don't worry about it."
-    window.adConfig = function(o) { console.log("Ad config bypassed."); };
-    window.setAdConfig = function(o) { console.log("Set Ad Config bypassed."); };
-    window.adsbygoogle = [];
-
-    // Fix for isRewardedAdAvailable and other potential ad calls
-    window.isRewardedAdAvailable = function() { return false; };
-    window.showRewardedAd = function() { console.log("Rewarded ad request blocked."); };
-    window.showInterstitialAd = function() { console.log("Interstitial ad request blocked."); };
-    window.hideBannerAd = function() { };
-    window.showBannerAd = function() { };
-    window.adBreak = function(o) { if(o && o.adBreakDone) o.adBreakDone(); };
+    window.adsbygoogle = window.adsbygoogle || [];
+    var adBreak = adConfig = function(o) {
+      adsbygoogle.push(o);
+    }
   </script>
 
   <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app-compat.js"></script>
@@ -59,8 +53,8 @@
     .game-section { display: flex; justify-content: center; align-items: center; height: 100vh; width: 100vw; }
     #gameContainer { width: 100%; height: 100%; }
     
-    /* Strict removal of UI elements */
-    #otherAppIcons, #aboutGame, #gameInfo, #mainFooter, .navbar, .inline-ads-160x600, .adsbygoogle { 
+    /* Strict removal of the UI junk we don't want */
+    #otherAppIcons, #aboutGame, #gameInfo, #mainFooter, .navbar, .inline-ads-160x600, .play-more-btn { 
         display: none !important; 
     }
   </style>
