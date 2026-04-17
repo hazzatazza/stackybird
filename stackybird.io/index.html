@@ -1,347 +1,64 @@
-
 <!DOCTYPE html>
 <html lang="en-us">
 
 <head>
-  <title>Stacky Bird</title>
-  <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Stack your eggs to pass obstacles, but watch out for monsters and spikes. Stacky Bird is the fun, addicting game you’ve been waiting for, with hours of flappy fun!">
-<meta property="og:description" content="Stack your eggs to pass obstacles, but watch out for monsters and spikes. Stacky Bird is the fun, addicting game you’ve been waiting for, with hours of flappy fun!">
-<meta name="keywords" content="stacky bird, flappy, fly, egg, jump, run, arcade, io, .io games, game, games, web game, html5, fun, free, cool, popular, kooapps, bored, job, work, working, simulation, entertainment, adventure">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="robots" content="index, follow">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Play Stacky Bird Online">
-<meta property="og:image" content="https://stackybird.io/app_icon_stackybird.png">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="192">
-<meta property="og:image:height" content="192">
-<meta property="og:locale" content="en_US" />
+    <title>Stacky Bird - Game Only</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="assets/css/eurostile-extended.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.min.css?v=1.0.5">
+    <link rel="stylesheet" href="assets/css/style.css?v=1.0.5">
 
-<meta name="twitter:title" content="Play Stacky Bird Online">
-<meta name="twitter:card" content="app">
-<meta name="twitter:description" content="Stack your eggs to pass obstacles, but watch out for monsters and spikes. Stacky Bird is the fun, addicting game you’ve been waiting for, with hours of flappy fun!">
-<meta name="twitter:app:country" content="US">
-<meta name="twitter:app:name:googleplay" content="Stacky Bird">
-<meta name="twitter:app:url:googleplay" content="https://play.google.com/store/apps/details?id=com.kooapps.stackybirdandroid">
-<meta name="twitter:app:id:googleplay" content="com.kooapps.stackybirdandroid">
-<meta name="twitter:app:name:iphone" content="Stacky Bird">
-<meta name="twitter:app:url:iphone" content="https://apps.apple.com/us/app/stacky-bird-fun-no-wifi-games/id1499304256">
-<meta name="twitter:app:id:iphone" content="1499304256">
-<meta name="twitter:app:name:ipad" content="Stacky Bird">
-<meta name="twitter:app:url:ipad" content="https://apps.apple.com/us/app/stacky-bird-fun-no-wifi-games/id1499304256">
-<meta name="twitter:app:id:ipad" content="1499304256">
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-analytics-compat.js"></script>
+    
+    <script src="Build/20986a4044eaa8551db6be07233cc1d9.js"></script>
 
-<meta name="apple-itunes-app" content="app-id=1499304256">
+    <script>
+        // Instantiate WebGL Game
+        var unityInstance = UnityLoader.instantiate("gameContainer", "Build/61df67ed8b648119f3a95eaa8e68b513.json", {
+            onProgress: UnityProgress
+        });
 
-    <meta name="url" content="https://stackybird.io">
-    <meta property="og:url" content="https://stackybird.io">
-    <meta name="twitter:url" content="https://stackybird.io">
-    <link rel="canonical" href="https://stackybird.io">
+        function OnUnityReady() {
+            if (unityInstance == null) return;
+            unityInstance.SendMessage("LocalisationManager", "ChangeCurrentLanguage", "en");
+        };
+    </script>
 
-<link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-
-<!-- Prefetch and preconnect Google and Amazon Ads -->
-<link rel="preconnect dns-prefetch" href="https://smartadserver.com/">
-<link rel="preconnect dns-prefetch" href="https://richaudience.com/en/publishers/">
-<link rel="preconnect dns-prefetch" href="https://platform.33across.com/sessions/new">
-<link rel="preconnect dns-prefetch" href="https://www.sovrn.com/">
-<link rel="preconnect dns-prefetch" href="https://www.onetag.com/">
-<link rel="preconnect dns-prefetch" href="https://www.moat.com/">
-<link rel="preconnect dns-prefetch" href="https://improvedigital.com/">
-<link rel="preconnect dns-prefetch" href="https://www.xandr.com/">
-<link rel="preconnect dns-prefetch" href="https://pubmatic.com/">
-<link rel="preconnect dns-prefetch" href="https://triplelift.com/">
-<link rel="preconnect dns-prefetch" href="https://www.magnite.com/">
-<link rel="preconnect dns-prefetch" href="https://gumgum.com/">
-
-<!-- Preload images -->
-<link rel="preload" fetchpriority="high" as="image" href="assets/design/menu_open.png">
-<link rel="preload" fetchpriority="high" as="image" href="assets/design/menu_close.png">
-<link rel="preload" fetchpriority="high" as="image" href="assets/design/bg/bg.png">
-<link rel="stylesheet" href="assets/css/eurostile-extended.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<link rel="stylesheet" href="assets/css/main.min.css?v=1.0.5">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MM9W5MYTQP"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-
-    gtag("consent", "default", {
-        ad_storage: "granted",
-        analytics_storage: "granted",
-        ad_user_data: "denied",
-        ad_personalization: "denied",
-        personalization_storage: "denied",
-        functionality_storage: "granted",
-        security_storage: "granted",
-        wait_for_update: 500
-    });
-
-    gtag("set", "ads_data_redaction", false);
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-MM9W5MYTQP');
-</script>  <link rel="stylesheet" href="assets/css/style.css?v=1.0.5">
-  <script src="assets/js/analyticsWebPlugin.js"></script>
-  <script src="TemplateData/UnityProgress.js"></script>
-
-  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app-compat.js"></script>
-
-  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-  <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-analytics-compat.js"></script>
-
-  <!-- SweetAlert2 resources  -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css" rel="stylesheet">
-
-  <!-- unity resources -->
-  <script src="Build/20986a4044eaa8551db6be07233cc1d9.js"></script>
-
-  <script>
-    // instantiate webgl
-    var unityInstance = UnityLoader.instantiate("gameContainer", "Build/61df67ed8b648119f3a95eaa8e68b513.json", {
-      onProgress: UnityProgress
-    });
-  </script>
-
-  <!-- Google AdSense -->
-  <script src="assets/js/googleAdsApiPlugin.js"></script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7799788185947239" crossorigin="anonymous" data-ad-frequency-hint="30s"></script>
-  <script>
-    window.adsbygoogle = window.adsbygoogle || [];
-    var adBreak = adConfig = function(o) {
-      adsbygoogle.push(o);
-    }
-  </script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #000; /* Keeps the background clean for the game */
+            overflow: hidden;
+        }
+        #game-wrapper {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #gameContainer {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 
 <body>
-  <div id="main">
-    <div class="game-section">
-      <div class="inline-ads-160x600">
-        <!-- stackybird.io-display-160x600-01 -->
-        <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7799788185947239" data-ad-slot="3310815116"></ins>
-        <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-      </div>
-      <div class="webgl-wrapper align-self-stretch">
-        <div class="webgl-content">
-          <div id="gameContainer" onload="refreshCanvas()"></div>
-          <!-- stackybird.io-display-728x90 -->
-          <ins id="stackybird-io_728x90" class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-7799788185947239" data-ad-slot="5339547819"></ins>
-          <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </div>
-        <div id="otherAppIcons" class="position-relative py-3 d-flex justify-content-evenly flex-wrap">
-          <a href="https://link.kooapps.com/stackybird?utm_campaign=stackybird_website_bnr" target="_blank" class="app-icon-link">
-            <img src="assets/design/home/app_icons/stacky_bird.webp" alt="Stacky Bird" class="app-icon" width="80" height="80">
-          </a>
-          <a href="https://link.kooapps.com/snake.io?utm_campaign=stackybird_website_bnr" target="_blank" class="app-icon-link">
-            <img src="assets/design/home/app_icons/snake_io.webp" alt="Snake.io" class="app-icon" width="80" height="80">
-          </a>
-          <a href="https://play.google.com/store/apps/details?id=com.kooapps.pianotiles2gp&hl=en_US&gl=US" target="_blank" class="app-icon-link">
-            <img src="assets/design/home/app_icons/piano_tiles2.webp" alt="Piano Tiles 2" class="app-icon" width="80" height="80">
-          </a>
-          <a href="https://apps.apple.com/us/app/piano-tiles/id848160327" target="_blank" class="app-icon-link">
-            <img src="assets/design/home/app_icons/piano_tiles1.webp" alt="Piano Tiles 1" class="app-icon" width="80" height="80">
-          </a>
-          <a href="https://link.kooapps.com/microtown.io?utm_campaign=stackybird_website_bnr" target="_blank" class="app-icon-link">
-            <img src="assets/design/home/app_icons/microtown.webp" alt="Micro Town.io" class="app-icon" width="80" height="80">
-          </a>
-          <a href="https://link.kooapps.com/watchpet?utm_campaign=stackybird_website_bnr" target="_blank" class="app-icon-link">
-            <img src="assets/design/home/app_icons/watch_pet.webp" alt="Watch Pet" class="app-icon" width="80" height="80">
-          </a>
-          <a href="https://link.kooapps.com/pictoword?utm_campaign=stackybird_website_bnr&nbsp;" target="_blank" class="app-icon-link">
-            <img src="assets/design/home/app_icons/pictoword.webp" alt="Pictoword" class="app-icon" width="80" height="80">
-          </a>
-          <a href="https://link.kooapps.com/pocketfamily?utm_campaign=stackybird_website_bnr&nbsp;" target="_blank" class="app-icon-link">
-            <img src="assets/design/home/app_icons/pocket_family.webp" alt="Pocket Family" class="app-icon" width="80" height="80">
-          </a>
-          <a href="https://link.kooapps.com/helixstackjump?utm_campaign=stackybird_website_bnr" target="_blank" class="app-icon-link">
-            <img src="assets/design/home/app_icons/helix_stack.webp" alt="Helix Stack Jump" class="app-icon" width="80" height="80">
-          </a>
-          <a href="https://link.kooapps.com/solitaireclassicera?utm_campaign=zendoku_website_bnr" target="_blank" class="app-icon-link">
-              <img src="assets/design/home/app_icons/solitaire.webp" alt="Solitaire Classic Era" class="app-icon" width="80" height="80">
-          </a>
-        </div>
-      </div>
-      <div class="inline-ads-160x600">
-        <!-- stackybird.io-display-160x600-02 -->
-        <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-7799788185947239" data-ad-slot="9508827301"></ins>
-        <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-      </div>
+    <div id="game-wrapper">
+        <div id="gameContainer"></div>
     </div>
-    
-<nav class="navbar navbar-expand-lg" style="background-color: transparent;">
-    <div class="container-fluid">
-        <button class="navbar-toggler" id="navbarToggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbarContent" aria-controls="mainNavbarContent" aria-expanded="false" aria-label="Toggle navigation">
-            &nbsp;
-        </button>
-        <a class="navbar-brand" href="/">
-            <img src="assets/design/home/icon_stacky.png" alt="Stacky Bird logo" width="45" height="45" class="d-inline-block" loading="lazy">&nbsp;
-            <span id="navbrandText">STACKY BIRD</span>
-        </a>
-        <div class="collapse navbar-collapse position-relative" id="mainNavbarContent">
-            <ul class="navbar-nav d-flex justify-content-around">
-                <li class="nav-item">
-                    <a class="nav-link active" href="/">Play</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="characters.php">Characters</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://kooapps.com/#games" target="_blank">kooapps.com</a>
-                </li>
-            </ul>
-            <div id="storeLinks">
-                <a href="https://link.kooapps.com/stackybird?utm_campaign=stackybird_website_ios">
-                    <img loading="lazy" src="assets/design/header/apple_badge.webp" class="store-badge" width="348" height="104" data-source-page="index.php" data-store="apple-app-store" data-utm-campaign="stackybird_website_ios" alt="Apple App Store button" id="appleStoreBtn">
-                </a>
-                <a href="https://link.kooapps.com/stackybird?utm_campaign=stackybird_website_android">
-                    <img loading="lazy" src="assets/design/header/google_play_badge.webp" class="store-badge" width="348" height="104" data-source-page="index.php" data-store="google-play-store" data-utm-campaign="stackybird_website_android" alt="Google Play Store button" id="googlePlayStoreBtn">
-                </a>
-            </div>
-        </div>
-    </div>
-</nav>    <div class="main-content">
-      <div id="aboutGame">
-        <div class="content">
-          <h1>
-            <strong>Stacky Bird: Fun Games</strong>
-          </h1>
-          <span class="fst-italic fw-light d-block">Kooapps Games</span>
-          <p>
-            Stack your eggs to pass obstacles, but watch out for monsters and spikes.
-            Stacky Bird is the fun, addicting game you've been waiting for, with hours of flappy fun!
-          </p>
-          <p>
-            The square bird is on a mission to fly to new lands.
-            Build up a long chain of eggs and flap around obstacles to reach new levels and locations, with beautiful bird houses for you to claim.
-          </p>
-          <p>
-            Stack the perfect amount of eggs and make 3 perfect landings to enter Shooty Mode.
-            Build up to greater challenges and flap your way to the finish as the best bird on the leaderboard!
-            The bird games are fun and addictive, but you can unlock even more characters!
-            Chickens, cats, pigs and more – find your favorite character and fly across the obstacles.
-          </p>
-          <p>
-            Stacky Bird is easy to pick up, but challenging to master.
-            Flap through the colorful levels of Stacky Bird and help your bird fly home!
-          </p>
-        </div>
-        <img id="tennis" class="floating-img" loading="lazy" src="assets/design/home/decor_image1.png" width="150" height="305" alt="Tennis Bird">
-        <img id="elephant" class="floating-img" loading="lazy" src="assets/design/home/decor_image2.png" width="176" height="388" alt="Elephant Bird">
-      </div>
-      <div id="gameInfo">
-        <div class="content d-flex justify-content-between align-items-center gap-3">
-          <div class="h-100">
-            <div>
-              <h2>Release Date</h2>
-              <ul>
-                <li>April 2020 (Android)</li>
-                <li>May 2020 (iOS)</li>
-              </ul>
-            </div>
-            <div>
-              <h2>Developer</h2>
-              <p>
-                Stacky Bird is developed by Kooapps. Play more of our games on&nbsp;
-                <a href="https://play.google.com/store/apps/dev?id=8438468457954317322" target="_blank">Google Play Store</a>&nbsp;and&nbsp;
-                <a href="https://apps.apple.com/ph/developer/kooapps/id290924809" target="_blank">Apple App Store</a>.
-              </p>
-            </div>
-            <div>
-              <h2>Platform</h2>
-              <ul>
-                <li>Web browser</li>
-                <li>Android</li>
-                <li>iOS</li>
-              </ul>
-            </div>
-            <div>
-              <h2>Controls</h2>
-              <ul class="mb-0">
-                <li>Stacking: Left Mouse Click</li>
-              </ul>
-            </div>
-          </div>
-          <div class="inline-ads-300x600">
-            <!-- stackybird.io-display-300x600-01 -->
-            <ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-7799788185947239" data-ad-slot="4313330624"></ins>
-            <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-<div id="mainFooter">
-    <div id="top">
-        <img id="reindeer" class="floating-img" loading="lazy" src="assets/design/home/decor_image3.png" width="133" height="237" alt="Tennis Bird">
-        <div class="w-100">
-                            <a class="play-more-btn" id="playNowBtn" href="https://stackybird.io" style="text-decoration:none;color:#fff;">
-                    <span class="d-block">PLAY NOW</span>
-                </a>
-                    </div>
-    </div>
-    <footer id="bottom" class="d-flex justify-content-center">
-        <div id="links">
-            <div id="socialLinks">
-                <div class="social-page-link">
-                    <a href="https://www.facebook.com/Kooapps" target="_blank">
-                        <img src="assets/design/footer/icon_fb.png" alt="Facebook Page Link" width="45" height="45">
-                    </a>
-                </div>
-                <div class="social-page-link">
-                    <a href="https://twitter.com/kooapps" target="_blank">
-                        <img src="assets/design/footer/icon_tw.png" alt="Twitter Page Link" width="45" height="45">
-                    </a>
-                </div>
-                <div class="social-page-link">
-                    <a href="https://www.youtube.com/@kooapps" target="_blank">
-                        <img src="assets/design/footer/icon_yt.png" alt="Youtube Page Link" width="45" height="45">
-                    </a>
-                </div>
-            </div>
-            <div class="external-link">
-                <a href="https://kooapps.com/terms.php" target="_blank">Terms of Use</a>
-            </div>
-            <div class="external-link">
-                <a href="https://kooapps.com/privacypolicy.php" target="_blank">Privacy Policy</a>
-            </div>
-        </div>
-    </footer>
-</div>  </div>
 
-  <script src="assets/js/lodash.custom.min.js"></script>
-  <script src="assets/js/app.js"></script>
-  <script>
-    function OnUnityReady() {
-      console.log("DEBUG TEST UNITY READY");
-      if (unityInstance == null) {
-        return;
-      }
-      unityInstance.SendMessage("LocalisationManager", "ChangeCurrentLanguage", "en");
-      console.log("DEBUG TEST UNITY READY, Language: " + "en");
-    };
-  </script>
-
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-<script defer src="assets/js/main.js?v=1.0.5"></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"e1269b058f9e40daa1fb29ac6a5dd894","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+    <script src="assets/js/lodash.custom.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>
